@@ -142,6 +142,11 @@ public class PlayerRenderer : MonoBehaviour
         trail.endColor = colour;
     }
 
+    public Color GetColor()
+    {
+        return Renderer.material.GetColor("_ColorChangeNewCol");
+    }
+
     public SpriteRenderer GetRenderer()
     {
         return Renderer;

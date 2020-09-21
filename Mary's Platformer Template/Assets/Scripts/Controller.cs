@@ -139,7 +139,7 @@ public class Controller : MonoBehaviourPun
         GroundedRemember();
 
         // Shoot Bullet
-        if (isShooting) ShootBullet(playerRenderer.FlipSide() ? -1f : 1f);
+        if (isShooting) ShootBullet(playerRenderer.FlipSide());
 
         rigidbody.velocity = new Vector2(rigidbody.velocity.x, Mathf.Clamp(rigidbody.velocity.y, -velocityLimit, velocityLimit));
 
@@ -397,12 +397,22 @@ public class Controller : MonoBehaviourPun
         isShooting = boolean;
     }
 
-    private void ShootBullet(float direction)
+    /// <summary>
+    /// Add RPC in here
+    /// </summary>
+    /// <param name="flip"></param>
+    private void ShootBullet(bool flip)
+    {
+        float direction = flip ? -1f : 1f;
+        BulletInitialize(direction, playerRenderer.GetColor());
+    }
+
+    private void BulletInitialize(float dir, Color col)
     {
         if (shootIntervalCount <= 0.0f)
         {
             var tmp = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
-            tmp.GetComponent<FireballScript>().SetDirection(new Vector2(direction, 0f));
+            tmp.GetComponent<FireballScript>().Initialize(new Vector2(dir, 0f), col);
             shootIntervalCount = shootInterval;
         }
     }

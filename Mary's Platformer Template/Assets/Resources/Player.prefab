@@ -68,7 +68,7 @@ MonoBehaviour:
   tailSpawnInterval: 0.04
   tailSpawnVelocity: 5
   velocityLimit: 16
-  shootInterval: 0.25
+  shootInterval: 0.16
   jumpPressedRememberTime: 0.1222
   groundedRememberTime: 0.085
   groundMask:

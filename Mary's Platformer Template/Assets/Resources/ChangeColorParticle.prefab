@@ -4974,6 +4974,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastingTime: 3.5
+  particleList:
+  - {fileID: 1101620957262066522}
+  - {fileID: 1726732618735031742}
 --- !u!1 &4714456283442240292
 GameObject:
   m_ObjectHideFlags: 0

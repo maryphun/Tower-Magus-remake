@@ -5,6 +5,7 @@ using UnityEngine;
 public class ParticleScript : MonoBehaviour
 {
     [SerializeField, Range(0.0f, 10.0f)] float lastingTime = 3.0f;
+    [SerializeField] private ParticleSystem[] particleList;
 
     // Start is called before the first frame update
     void Start()
@@ -17,5 +18,13 @@ public class ParticleScript : MonoBehaviour
         yield return new WaitForSeconds(time);
         Debug.Log("destroy!");
         Destroy(gameObject);
+    }
+
+    public void SetParticleColor(Color targetColor)
+    {
+        foreach (ParticleSystem particle in particleList)
+        {
+            particle.startColor = targetColor;
+        }
     }
 }
