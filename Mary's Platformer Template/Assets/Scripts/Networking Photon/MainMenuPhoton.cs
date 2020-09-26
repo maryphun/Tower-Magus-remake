@@ -8,7 +8,7 @@ using Photon.Realtime;
 using DG.Tweening;
 
 public class MainMenuPhoton : MonoBehaviourPunCallbacks
-{
+{//
     [SerializeField] private Transform playerSpawnPoint = null;
     [SerializeField] private GameObject playerToSpawn = null, effectPrefab;
     [SerializeField] private GameObject nameInputPanel = null;

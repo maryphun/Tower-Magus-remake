@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MainMenu
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Ground
   - Player
   - Fireball
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -44,6 +45,9 @@ TagManager:
     locked: 0
   - name: Effect Behind Player
     uniqueID: 1780093195
+    locked: 0
+  - name: Enemy
+    uniqueID: 3981141167
     locked: 0
   - name: Player
     uniqueID: 335909207

@@ -411,7 +411,9 @@ public class Controller : MonoBehaviourPun
     {
         if (shootIntervalCount <= 0.0f)
         {
-            var tmp = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+            Vector2 spawnPos = new Vector2(transform.position.x + (dir * 0.8f), transform.position.y + 0.1f);
+
+            var tmp = Instantiate(fireballPrefab, spawnPos, Quaternion.identity);
             tmp.GetComponent<FireballScript>().Initialize(new Vector2(dir, 0f), col);
             shootIntervalCount = shootInterval;
         }

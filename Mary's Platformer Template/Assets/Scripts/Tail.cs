@@ -25,5 +25,5 @@ public class Tail : MonoBehaviour
         renderer = tailRenderer;
         initAlpha = initialAlpha;
         lerp = 0.0f;
-}
+    }
 }

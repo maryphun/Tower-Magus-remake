@@ -16,7 +16,6 @@ public class ParticleScript : MonoBehaviour
     IEnumerator DestroySelf(float time)
     {
         yield return new WaitForSeconds(time);
-        Debug.Log("destroy!");
         Destroy(gameObject);
     }
 

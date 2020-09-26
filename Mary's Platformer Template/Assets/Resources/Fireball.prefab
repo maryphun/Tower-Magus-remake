@@ -130,14 +130,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 13.5
-  lastingTime: 5
+  lastingTime: 3.5
   directionVector: {x: 1, y: 0}
   renderer: {fileID: 2662552432274596525}
   anim: {fileID: 3473698503918279745}
   collider: {fileID: 9124088313445575147}
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 2304
   hitParticle: {fileID: 5511180062843172955, guid: 9b3a54d74923d0e4395f4a486bbc5e1d, type: 3}
 --- !u!61 &9124088313445575147
 BoxCollider2D:
@@ -152,7 +152,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15474518, y: -0.0012201369}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -163,5 +163,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44952014, y: 0.35234332}
+  m_Size: {x: 0.65, y: 0.3}
   m_EdgeRadius: 0
