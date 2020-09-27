@@ -43,11 +43,7 @@ public class FireballScript : MonoBehaviour
                 }
             }
 
-            anim.SetTrigger("Hit");
-            enabled = false;
-            SelfDestroy();
-            SpawnParticleWithColor(transform.position + movTmp, fireballColor);
-            transform.DOPause();
+            SelfDestroy(movTmp);
         }
     }
 
@@ -87,10 +83,14 @@ public class FireballScript : MonoBehaviour
         colOverLifetimeModule.color = newLifetimeColorKeys;
     }
 
-    private void SelfDestroy()
+    private void SelfDestroy(Vector3 movement)
     {
+        anim.SetTrigger("Hit");
+        enabled = false;
         // 0.25f is the animation length of the impact, so this fireball will be deleted after the animation
         Destroy(gameObject, 0.25f);
+        SpawnParticleWithColor(transform.position + movement, fireballColor);
+        transform.DOPause();
     }
 
     private void DealDamage(GameObject target)

@@ -17,6 +17,7 @@ public class PlayerRenderer : MonoBehaviour
 
     private SpriteRenderer renderer;
     private Animator animator;
+    private float shootAnimationTimer;
 
     private SpriteRenderer Renderer
     {
@@ -52,6 +53,7 @@ public class PlayerRenderer : MonoBehaviour
 
     private void Start()
     {
+        enabled = false;
         // Initialize Trail Setting
         Color startColor = Renderer.material.GetColor("_ColorChangeNewCol");
         startColor.a = 0.2f;
@@ -160,5 +162,42 @@ public class PlayerRenderer : MonoBehaviour
     public void WalkDustEnable(bool boolean)
     {
         walkDust.enableEmission = boolean;
+    }
+
+    public void ShootAnimationTimerReset(float time)
+    {
+        if (shootAnimationTimer <= 0.0f)
+        {
+            //first time 
+            StartCoroutine(ShootAnimationDelay(true, time));
+            enabled = true;
+        }
+        shootAnimationTimer = time;
+    }
+
+    private void Update()
+    {
+        shootAnimationTimer -= Time.deltaTime;
+
+        if (shootAnimationTimer <= 0.0f)
+        {
+            enabled = false;
+        }
+    }
+
+    private IEnumerator ShootAnimationDelay(bool boolean, float delayTime)
+    {
+        animator.SetBool("IsShooting", boolean);
+
+        yield return new WaitForSeconds(delayTime - 0.01f);
+
+        if (shootAnimationTimer <= 0.0f)
+        {
+            animator.SetBool("IsShooting", !boolean);
+        }
+        else
+        {
+            StartCoroutine(ShootAnimationDelay(boolean, delayTime));
+        }
     }
 }

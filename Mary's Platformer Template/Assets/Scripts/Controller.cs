@@ -396,15 +396,31 @@ public class Controller : MonoBehaviourPun
         playerRenderer.ShootAnimation(boolean);
         isShooting = boolean;
     }
-
-    /// <summary>
-    /// Add RPC in here
-    /// </summary>
-    /// <param name="flip"></param>
+    
     private void ShootBullet(bool flip)
+    {
+        if (!PhotonNetwork.OfflineMode) //not offline mode
+        {
+            //online
+            photonView.RPC("ShootBulletRPC", RpcTarget.All, flip);
+            return;
+        }
+        // local
+        float direction = flip ? -1f : 1f;
+        BulletInitialize(direction, playerRenderer.GetColor());
+    }
+
+    [PunRPC]
+    private void ShootBulletRPC(bool flip)
     {
         float direction = flip ? -1f : 1f;
         BulletInitialize(direction, playerRenderer.GetColor());
+
+        if (!photonView.IsMine)
+        {
+            playerRenderer.FlipSide(direction);
+            playerRenderer.ShootAnimationTimerReset(shootInterval);
+        }
     }
 
     private void BulletInitialize(float dir, Color col)
